@@ -12,5 +12,14 @@ import br.edu.ifsc.abstracts.AbstractPessoaFisica;
  * @author Vitor
  */
 public class Cliente extends AbstractPessoaFisica{
+
+    public Cliente(String nome, String cnpj, String contato, String endereco) {
+        super(nome, cnpj, contato, endereco);
+    }
+
+    public Cliente() {
+    }
+    
+    
     
 }

@@ -5,7 +5,7 @@
  */
 package br.edu.ifsc.abstracts;
 
-import interfaces.IItemLista;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,32 +13,33 @@ import java.util.List;
  *
  * @author Vitor
  */
-public abstract class AbstractLista {
-    protected List<IItemLista> lista;
+public abstract class AbstractLista<T> {
+    protected List<T> lista;
 
     public AbstractLista() {
         this.lista = new ArrayList<>();
     }
 
-    public AbstractLista(List<IItemLista> lista) {
+    public AbstractLista(List<T> lista) {
         this.lista = lista;
     }
 
     /**
      * @return the lista
      */
-    public List<IItemLista> getLista() {
+    public List<T> getLista() {
         return lista;
     }
 
     /**
      * @param lista the lista to set
      */
-    public void setLista(List<IItemLista> lista) {
+    public void setLista(List<T> lista) {
         this.lista = lista;
     }
     
-    public abstract boolean add(IItemLista item);
-    public abstract boolean remove(IItemLista item);
-    public abstract void upadate(IItemLista novoItem, int index);
+    public abstract boolean add(T item);
+    public abstract boolean remove(T item);
+    public abstract void upadate(T novoItem, int index);
+    public abstract T get(int index);
 }

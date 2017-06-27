@@ -5,13 +5,13 @@
  */
 package br.edu.ifsc.abstracts;
 
-import interfaces.IItemLista;
+
 
 /**
  *
  * @author Vitor
  */
-public abstract class AbstractPessoaFisica implements IItemLista{
+public abstract class AbstractPessoaFisica {
     protected String nome;
     protected String cnpj;
     protected String contato;

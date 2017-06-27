@@ -3,46 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifsc.abstracts.lists;
+package br.edu.ifsc.lists;
 
 import br.edu.ifsc.abstracts.AbstractLista;
 import br.edu.ifsc.model.Fornecedor;
-import interfaces.IItemLista;
-import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  *
  * @author Vitor
  */
-public class FornecedorLista extends AbstractLista{
+public class FornecedorLista extends AbstractLista<Fornecedor>{
 
     @Override
-    public boolean add(IItemLista item) {
+    public boolean add(Fornecedor item) {
        return this.lista.add(item);
     }
 
     @Override
-    public boolean remove(IItemLista item) {
+    public boolean remove(Fornecedor item) {
         return this.lista.remove(item);
     }
 
     @Override
-    public void upadate(IItemLista novoItem, int index) {
+    public void upadate(Fornecedor novoItem, int index) {
         this.lista.add(index, novoItem);
     }
     
+    @Override
     public Fornecedor get(int index){
         return ((Fornecedor)this.lista.get(index));
     }
     
-    public List<Fornecedor> getAll(){
-        List<Fornecedor> fornecedorLista = new ArrayList<>();
-        for(IItemLista fornecedor : this.lista){
-            fornecedorLista.add(((Fornecedor)fornecedor));
-        }
-        return fornecedorLista;
-    }
+  
     
 }

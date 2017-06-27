@@ -3,15 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.ifsc.abstracts.lists;
+package br.edu.ifsc.lists;
 
 import br.edu.ifsc.abstracts.AbstractLista;
 import br.edu.ifsc.enums.EnumEspecie;
 import br.edu.ifsc.enums.EnumPorte;
 import br.edu.ifsc.enums.EnumTipo;
 import br.edu.ifsc.model.Racao;
-import interfaces.IItemLista;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,34 +17,20 @@ import java.util.List;
  *
  * @author Vitor
  */
-public class RacaoLista extends AbstractLista{
+public class RacaoLista extends AbstractLista<Racao>{
     
 
     public RacaoLista() {
     }
     
-    
-    /**
-     * @return the listaRacao
-     */
-    public List<IItemLista> getListaRacao() {
-        return this.lista;
-    }
-
-    /**
-     * @param listaRacao the listaRacao to set
-     */
-    public void setListaRacao(List<IItemLista> listaRacao) {
-        this.lista = listaRacao;
-    }
-
+   
     /**
      *
      * @param racao
      * @return
      */
     @Override
-    public boolean add(IItemLista racao){
+    public boolean add(Racao racao){
         return this.lista.add(racao);
     }
     
@@ -56,7 +40,7 @@ public class RacaoLista extends AbstractLista{
      * @return
      */
     @Override
-    public boolean remove(IItemLista racao){
+    public boolean remove(Racao racao){
         return this.lista.remove(racao);
     }
     
@@ -66,15 +50,15 @@ public class RacaoLista extends AbstractLista{
      * @param index
      */
     @Override
-    public void upadate(IItemLista novaRacao, int index){
+    public void upadate(Racao novaRacao, int index){
         this.lista.add(index, novaRacao);
     }
     
     public List<Racao> getByEspecie(EnumEspecie especie){
         List<Racao> racaoEspecie = new ArrayList<>();
-        for(IItemLista racao: this.lista){
-            if(((Racao)racao).getEspecie().equals(especie)){
-                racaoEspecie.add(((Racao)racao));
+        for(Racao racao: this.lista){
+            if(racao.getEspecie().equals(especie)){
+                racaoEspecie.add(racao);
             }
         }
         return racaoEspecie;
@@ -82,9 +66,9 @@ public class RacaoLista extends AbstractLista{
     
     public List<Racao> getByPorte(EnumPorte porte){
         List<Racao> racaoPorte = new ArrayList<>();
-        for(IItemLista racao: this.lista){
-            if(((Racao)racao).getPorte().equals(porte)){
-                racaoPorte.add(((Racao)racao));
+        for(Racao racao: this.lista){
+            if(racao.getPorte().equals(porte)){
+                racaoPorte.add(racao);
             }
         }
         return racaoPorte;
@@ -92,22 +76,23 @@ public class RacaoLista extends AbstractLista{
     
     public List<Racao> getByTipo(EnumTipo tipo){
         List<Racao> racaoTipo = new ArrayList<>();
-        for(IItemLista racao: this.lista){
-            if(((Racao)racao).getTipo().equals(tipo)){
-                racaoTipo.add(((Racao)racao));
+        for(Racao racao: this.lista){
+            if(racao.getTipo().equals(tipo)){
+                racaoTipo.add(racao);
             }
         }
         return racaoTipo;
     }
     
+    @Override
     public Racao get(int index){
-        return ((Racao)this.lista.get(index));
+        return this.lista.get(index);
     }
     
     public List<Racao> getAll(){
         List<Racao> listaRacao = new ArrayList<>();
-        for(IItemLista racao : this.lista){
-            listaRacao.add(((Racao)racao));
+        for(Racao racao : this.lista){
+            listaRacao.add(racao);
         }
         return listaRacao;
     }
