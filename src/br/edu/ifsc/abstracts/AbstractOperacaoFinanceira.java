@@ -7,6 +7,7 @@ package br.edu.ifsc.abstracts;
 
 import br.edu.ifsc.model.ItemOperacaoFinanceira;
 import br.edu.ifsc.model.Racao;
+import interfaces.IItemLista;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Vitor
  */
-public abstract class AbstractOperacaoFinanceira {
+public abstract class AbstractOperacaoFinanceira implements IItemLista{
     protected Date data;
     protected AbstractPessoaFisica pessoaFisica;
     protected List<ItemOperacaoFinanceira> listaRacao;

@@ -8,12 +8,13 @@ package br.edu.ifsc.model;
 import br.edu.ifsc.enums.EnumEspecie;
 import br.edu.ifsc.enums.EnumPorte;
 import br.edu.ifsc.enums.EnumTipo;
+import interfaces.IItemLista;
 
 /**
  *
  * @author Vitor
  */
-public class Racao {
+public class Racao implements IItemLista{
     private String nome;
     private double peso;
     private double valor;
