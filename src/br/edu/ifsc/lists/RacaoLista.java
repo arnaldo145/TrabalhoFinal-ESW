@@ -88,14 +88,6 @@ public class RacaoLista extends AbstractLista<Racao>{
     public Racao get(int index){
         return this.lista.get(index);
     }
-    
-    public List<Racao> getAll(){
-        List<Racao> listaRacao = new ArrayList<>();
-        for(Racao racao : this.lista){
-            listaRacao.add(racao);
-        }
-        return listaRacao;
-    }
 
     
 }

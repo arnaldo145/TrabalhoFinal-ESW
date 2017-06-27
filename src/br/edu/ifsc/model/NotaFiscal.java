@@ -14,16 +14,19 @@ import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
 public class NotaFiscal {
     private AbstractOperacaoFinanceira operacaoFinanceira;
 
-    public NotaFiscal() {
-    }
-
+   
     public NotaFiscal(AbstractOperacaoFinanceira operacaoFinanceira) {
         this.operacaoFinanceira = operacaoFinanceira;
     }
     
     public String gerarNota(){
         String texto = "==== Nota Fiscal ====\n";
-        texto += this.operacaoFinanceira.toString() + "\n";
+        if(this.operacaoFinanceira instanceof Compra){
+            texto += ((Compra)this.operacaoFinanceira).toString() + "\n";
+        }
+        if(this.operacaoFinanceira instanceof Venda){
+            texto += ((Venda)this.operacaoFinanceira).toString() + "\n";
+        }
         texto += "=============================";
         return texto;
     }

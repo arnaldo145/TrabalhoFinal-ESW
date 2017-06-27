@@ -6,7 +6,6 @@
 package br.edu.ifsc.abstracts;
 
 import br.edu.ifsc.model.ItemOperacaoFinanceira;
-import br.edu.ifsc.model.Racao;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,8 +25,8 @@ public abstract class AbstractOperacaoFinanceira {
         this.listaRacao = new ArrayList<>();
     }
 
-    public AbstractOperacaoFinanceira(Date data, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        this.data = data;
+    public AbstractOperacaoFinanceira(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+        this.data = new Date();
         this.pessoaFisica = pessoaFisica;
         this.listaRacao = listaRacao;
     }

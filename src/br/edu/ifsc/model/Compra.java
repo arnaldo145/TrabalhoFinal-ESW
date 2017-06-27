@@ -21,17 +21,17 @@ public class Compra extends AbstractOperacaoFinanceira{
     public Compra() {
     }
 
-    public Compra(int parcelas) {
-        this.parcelas = parcelas;
+    public Compra(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+        super(pessoaFisica, listaRacao);
     }
-
-    public Compra(int parcelas, Date data, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(data, pessoaFisica, listaRacao);
+    
+    public Compra(int parcelas, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+        super(pessoaFisica, listaRacao);
         this.parcelas = parcelas;
     }
     
     public double realizarOperacao(int parcelas) {
-        this.parcelas = this.parcelas;
+        this.parcelas = parcelas;
         return this.realizarOperacao() / this.parcelas;
     }
 

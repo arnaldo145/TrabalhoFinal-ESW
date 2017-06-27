@@ -17,12 +17,19 @@ import java.util.List;
 public class Venda extends AbstractOperacaoFinanceira{
     private double desconto;
 
-    public Venda() {
+    public Venda(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+        super(pessoaFisica, listaRacao);
         this.desconto = 0;
     }
 
-    public Venda(double desconto, Date data, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(data, pessoaFisica, listaRacao);
+    public Venda(double desconto) {
+        this.desconto = desconto;
+    }
+    
+    
+
+    public Venda(double desconto, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+        super(pessoaFisica, listaRacao);
         this.desconto = desconto;
     }
     
