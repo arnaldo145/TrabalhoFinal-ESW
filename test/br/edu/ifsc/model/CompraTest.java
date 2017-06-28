@@ -86,6 +86,13 @@ public class CompraTest {
         this.compra.realizarOperacao();
     }
     
+    @Test(expected = Error.class)
+    public void testRealizarOperacaoListaVaziaComParcelas() {
+        System.out.println("* Teste Realizar Operaçao com Lista Vazia");
+        this.compra.setListaRacao(new ItemOperacaoFinanceiraLista());
+        this.compra.realizarOperacao(5);
+    }
+    
   
     /**
      * Test of toString method, of class Compra.
