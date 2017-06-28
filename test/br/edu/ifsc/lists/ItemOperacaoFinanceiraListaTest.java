@@ -5,7 +5,11 @@
  */
 package br.edu.ifsc.lists;
 
+import br.edu.ifsc.enums.EnumEspecie;
+import br.edu.ifsc.enums.EnumPorte;
+import br.edu.ifsc.enums.EnumTipo;
 import br.edu.ifsc.model.ItemOperacaoFinanceira;
+import br.edu.ifsc.model.Racao;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,22 +22,22 @@ import static org.junit.Assert.*;
  * @author Aluno
  */
 public class ItemOperacaoFinanceiraListaTest {
-    
+
     public ItemOperacaoFinanceiraListaTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -42,42 +46,48 @@ public class ItemOperacaoFinanceiraListaTest {
      * Test of add method, of class ItemOperacaoFinanceiraLista.
      */
     @Test
-    public void testAdd() {
-        System.out.println("add");
-        ItemOperacaoFinanceira item = null;
-        ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
-        boolean expResult = false;
-        boolean result = instance.add(item);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void deveAdicionarItemOperacaoFinanceira() {
+        System.out.println("Teste - Deve Adicionar ItemOperacaoFinanceira");
+        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
+        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(racao, 1);
+        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
+
+        assertTrue(itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira));
     }
 
     /**
      * Test of remove method, of class ItemOperacaoFinanceiraLista.
      */
     @Test
-    public void testRemove() {
-        System.out.println("remove");
-        ItemOperacaoFinanceira item = null;
-        ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
-        boolean expResult = false;
-        boolean result = instance.remove(item);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void deveRemoverItemOperacaoFinanceira() {
+        System.out.println("Teste - Deve remover ItemOperacaoFinanceira");
+        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
+        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(1, racao, 5);
+        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
+        itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira);
+
+        assertTrue(itemOperacaoFinanceiraLista.remove(itemOperacaoFinanceira));
     }
 
     /**
      * Test of upadate method, of class ItemOperacaoFinanceiraLista.
      */
     @Test
-    public void testUpadate() {
-        System.out.println("upadate");
+    public void atualizarItemOperacaoFinanceira() {
+        System.out.println("Teste - Deve atualizar ItemOperacaoFinanceira");
+        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
+        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(1, racao, 5);
+        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
+        itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira);
+        
+        racao.setValor(25.00);
+        assertTrue(itemOperacaoFinanceiraLista.update(itemOperacaoFinanceira, 0));
+        
+        
         ItemOperacaoFinanceira novoItem = null;
         int index = 0;
         ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
-        instance.upadate(novoItem, index);
+        instance.update(novoItem, index);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -86,7 +96,7 @@ public class ItemOperacaoFinanceiraListaTest {
      * Test of get method, of class ItemOperacaoFinanceiraLista.
      */
     @Test
-    public void testGet() {
+    public void obterItemOperacaoFinanceira() {
         System.out.println("get");
         int index = 0;
         ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
@@ -96,5 +106,5 @@ public class ItemOperacaoFinanceiraListaTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+
 }

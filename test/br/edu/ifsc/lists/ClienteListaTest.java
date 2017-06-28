@@ -96,7 +96,7 @@ public class ClienteListaTest {
         System.out.println("* Teste Update");
         Cliente novoCliente = this.listaCliente.get(0);
         novoCliente.setNome("Nome Modigicado");
-        this.listaCliente.upadate(novoCliente, 0);
+        this.listaCliente.update(novoCliente, 0);
         assertEquals("Nome Modigicado", this.listaCliente.get(0).getNome());
     }
     
@@ -105,7 +105,7 @@ public class ClienteListaTest {
         System.out.println("* Teste Update com Index Inesistente");
         Cliente novoCliente = this.listaCliente.get(0);
         novoCliente.setNome("Nome Modificado");
-        this.listaCliente.upadate(novoCliente, 100);
+        this.listaCliente.update(novoCliente, 100);
         assertEquals("Nome Modigicado", this.listaCliente.get(0).getNome());
     }
 

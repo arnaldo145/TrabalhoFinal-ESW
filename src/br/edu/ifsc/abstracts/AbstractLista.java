@@ -40,6 +40,6 @@ public abstract class AbstractLista<T> {
     
     public abstract boolean add(T item);
     public abstract boolean remove(T item);
-    public abstract void upadate(T novoItem, int index);
+    public abstract boolean update(T novoItem, int index);
     public abstract T get(int index);
 }

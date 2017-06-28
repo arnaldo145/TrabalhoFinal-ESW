@@ -30,8 +30,15 @@ public class ClienteLista extends AbstractLista<Cliente>{
     }
 
     @Override
-    public void upadate(Cliente novoItem, int index) {
-        this.lista.add(index, novoItem);
+    public boolean update(Cliente novoItem, int index) {
+       boolean resultado = false;
+
+        if (lista.get(index) != null) {
+            this.lista.add(index, novoItem);
+            resultado = true;
+        }
+
+        return resultado;
     }
     
     @Override
