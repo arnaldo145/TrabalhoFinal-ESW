@@ -17,77 +17,81 @@ import java.util.List;
  *
  * @author Vitor
  */
-public class RacaoLista extends AbstractLista<Racao>{
-    
+public class RacaoLista extends AbstractLista<Racao> {
 
     public RacaoLista() {
     }
-    
-   
+
     /**
      *
      * @param racao
      * @return
      */
     @Override
-    public boolean add(Racao racao){
+    public boolean add(Racao racao) {
         return this.lista.add(racao);
     }
-    
+
     /**
      *
      * @param racao
      * @return
      */
     @Override
-    public boolean remove(Racao racao){
+    public boolean remove(Racao racao) {
         return this.lista.remove(racao);
     }
-    
+
     /**
      *
      * @param novaRacao
      * @param index
      */
     @Override
-    public void upadate(Racao novaRacao, int index){
-        this.lista.add(index, novaRacao);
+    public boolean update(Racao novaRacao, int index) {
+        boolean resultado = false;
+
+        if (lista.get(index) != null) {
+            this.lista.add(index, novaRacao);
+            resultado = true;
+        }
+
+        return resultado;
     }
-    
-    public List<Racao> getByEspecie(EnumEspecie especie){
+
+    public List<Racao> getByEspecie(EnumEspecie especie) {
         List<Racao> racaoEspecie = new ArrayList<>();
-        for(Racao racao: this.lista){
-            if(racao.getEspecie().equals(especie)){
+        for (Racao racao : this.lista) {
+            if (racao.getEspecie().equals(especie)) {
                 racaoEspecie.add(racao);
             }
         }
         return racaoEspecie;
     }
-    
-    public List<Racao> getByPorte(EnumPorte porte){
+
+    public List<Racao> getByPorte(EnumPorte porte) {
         List<Racao> racaoPorte = new ArrayList<>();
-        for(Racao racao: this.lista){
-            if(racao.getPorte().equals(porte)){
+        for (Racao racao : this.lista) {
+            if (racao.getPorte().equals(porte)) {
                 racaoPorte.add(racao);
             }
         }
         return racaoPorte;
     }
-    
-    public List<Racao> getByTipo(EnumTipo tipo){
+
+    public List<Racao> getByTipo(EnumTipo tipo) {
         List<Racao> racaoTipo = new ArrayList<>();
-        for(Racao racao: this.lista){
-            if(racao.getTipo().equals(tipo)){
+        for (Racao racao : this.lista) {
+            if (racao.getTipo().equals(tipo)) {
                 racaoTipo.add(racao);
             }
         }
         return racaoTipo;
     }
-    
+
     @Override
-    public Racao get(int index){
+    public Racao get(int index) {
         return this.lista.get(index);
     }
 
-    
 }

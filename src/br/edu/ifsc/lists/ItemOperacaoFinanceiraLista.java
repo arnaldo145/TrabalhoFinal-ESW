@@ -12,7 +12,7 @@ import br.edu.ifsc.model.ItemOperacaoFinanceira;
  *
  * @author Aluno
  */
-public class ItemOperacaoFinanceiraLista extends AbstractLista<ItemOperacaoFinanceira>{
+public class ItemOperacaoFinanceiraLista extends AbstractLista<ItemOperacaoFinanceira> {
 
     @Override
     public boolean add(ItemOperacaoFinanceira item) {
@@ -25,13 +25,20 @@ public class ItemOperacaoFinanceiraLista extends AbstractLista<ItemOperacaoFinan
     }
 
     @Override
-    public void upadate(ItemOperacaoFinanceira novoItem, int index) {
-        this.lista.add(index, novoItem);
+    public boolean update(ItemOperacaoFinanceira novoItem, int index) {
+        boolean resultado = false;
+
+        if (lista.get(index) != null) {
+            this.lista.add(index, novoItem);
+            resultado = true;
+        }
+
+        return resultado;
     }
 
     @Override
     public ItemOperacaoFinanceira get(int index) {
         return this.lista.get(index);
     }
-    
+
 }

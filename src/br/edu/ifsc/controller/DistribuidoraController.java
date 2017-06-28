@@ -143,7 +143,7 @@ public class DistribuidoraController {
     }
     
     public void update(Cliente novo, int index){
-        this.listaCliente.upadate(novo, index);
+        this.listaCliente.update(novo, index);
     }
     
     public boolean remove(Cliente cliente){
@@ -167,7 +167,7 @@ public class DistribuidoraController {
     }
     
     public void update(Fornecedor novo, int index){
-        this.listaFornecedor.upadate(novo, index);
+        this.listaFornecedor.update(novo, index);
     }
     
     public Fornecedor getFornecedor(int index){
@@ -187,7 +187,7 @@ public class DistribuidoraController {
     }
     
     public void update(Racao novo, int index){
-        this.listaRacao.upadate(novo, index);
+        this.listaRacao.update(novo, index);
     }
     
     public Racao getRacao(int index){
@@ -207,7 +207,7 @@ public class DistribuidoraController {
     }
     
     public void update(ItemOperacaoFinanceira novo, int index){
-        this.listaItemOperacao.upadate(novo, index);
+        this.listaItemOperacao.update(novo, index);
     }
     
     public ItemOperacaoFinanceira getItemOperacaoFinanceira(int index){

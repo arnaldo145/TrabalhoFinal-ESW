@@ -5,13 +5,13 @@
  */
 package br.edu.ifsc.model;
 
-import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
-
 /**
  *
  * @author Vitor
  */
 public class ItemOperacaoFinanceira {
+
+    private int codigo;
     private Racao racao;
     private int quantidade;
 
@@ -22,6 +22,12 @@ public class ItemOperacaoFinanceira {
         this.racao = racao;
         this.quantidade = quantidade;
     }
+
+    public ItemOperacaoFinanceira(int codigo, Racao racao, int quantidade) {
+        this.codigo = codigo;
+        this.racao = racao;
+        this.quantidade = quantidade;
+    }  
     
 
     /**
@@ -51,9 +57,35 @@ public class ItemOperacaoFinanceira {
     public void setRacao(Racao racao) {
         this.racao = racao;
     }
-    
-    public double calcularValor(){
+
+    public double calcularValor() {
         return this.racao.getValor() * this.quantidade;
+    }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ItemOperacaoFinanceira other = (ItemOperacaoFinanceira) obj;
+        if (this.codigo != other.codigo) {
+            return false;
+        }
+        return true;
     }
 
     @Override
@@ -63,6 +95,5 @@ public class ItemOperacaoFinanceira {
                 + "Valor Final: " + this.calcularValor() + "\n";
         return texto;
     }
-    
-    
+
 }

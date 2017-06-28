@@ -26,8 +26,15 @@ public class FornecedorLista extends AbstractLista<Fornecedor>{
     }
 
     @Override
-    public void upadate(Fornecedor novoItem, int index) {
-        this.lista.add(index, novoItem);
+    public boolean update(Fornecedor novoItem, int index) {
+        boolean resultado = false;
+
+        if (lista.get(index) != null) {
+            this.lista.add(index, novoItem);
+            resultado = true;
+        }
+
+        return resultado;
     }
     
     @Override

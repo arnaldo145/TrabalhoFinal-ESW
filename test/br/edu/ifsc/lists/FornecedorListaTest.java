@@ -96,7 +96,7 @@ public class FornecedorListaTest {
         System.out.println("* Teste Update");
         Fornecedor novoFornecedor = this.listaFornecedor.get(0);
         novoFornecedor.setUrl("novaUrl");
-        this.listaFornecedor.upadate(novoFornecedor, 0);
+        this.listaFornecedor.update(novoFornecedor, 0);
         assertEquals("novaUrl", this.listaFornecedor.get(0).getUrl());
     }
     
@@ -105,7 +105,7 @@ public class FornecedorListaTest {
         System.out.println("* Teste Update com Index Inesistente");
         Fornecedor novoFornecedor = this.listaFornecedor.get(0);
         novoFornecedor.setNome("Nome Modificado");
-        this.listaFornecedor.upadate(novoFornecedor, 100);
+        this.listaFornecedor.update(novoFornecedor, 100);
         assertEquals("Nome Modificado", this.listaFornecedor.get(0).getNome());
     }
 
