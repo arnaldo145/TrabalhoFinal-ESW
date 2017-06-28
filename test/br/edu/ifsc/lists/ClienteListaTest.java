@@ -83,7 +83,7 @@ public class ClienteListaTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testRemoveIndexInexistente() {
+    public void removerClienteNaoCadastrado() {
         System.out.println("* Teste Remover com Index inesistente");
         this.listaCliente.remove(this.listaCliente.get(100));
     }
@@ -92,7 +92,7 @@ public class ClienteListaTest {
      * Test of upadate method, of class ClienteLista.
      */
     @Test
-    public void testUpadate() {
+    public void verificarAtualizacaoCliente() {
         System.out.println("* Teste Update");
         Cliente novoCliente = this.listaCliente.get(0);
         novoCliente.setNome("Nome Modigicado");
@@ -101,7 +101,7 @@ public class ClienteListaTest {
     }
     
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testUpadateIndexInesistente() {
+    public void atualizarClienteNaoExistente() {
         System.out.println("* Teste Update com Index Inesistente");
         Cliente novoCliente = this.listaCliente.get(0);
         novoCliente.setNome("Nome Modificado");
@@ -113,7 +113,7 @@ public class ClienteListaTest {
      * Test of get method, of class ClienteLista.
      */
     @Test
-    public void testGet() {
+    public void obterCliente() {
         System.out.println("* Teste Get");
         Cliente cliente = new Cliente("Cliente 6", "345", "345", "Endereço 6");
         this.listaCliente.add(cliente);
@@ -121,7 +121,7 @@ public class ClienteListaTest {
     }
     
     @Test(expected = IndexOutOfBoundsException.class) 
-    public void testGetInesistente() {
+    public void obterClienteNãoExistente() {
         System.out.println("* Teste Get com Index inesistente");
         this.listaCliente.get(100);
     }
