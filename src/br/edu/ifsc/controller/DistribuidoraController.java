@@ -6,7 +6,6 @@
 package br.edu.ifsc.controller;
 
 import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
-import br.edu.ifsc.abstracts.AbstractPessoaFisica;
 import br.edu.ifsc.lists.ClienteLista;
 import br.edu.ifsc.lists.FornecedorLista;
 import br.edu.ifsc.lists.ItemOperacaoFinanceiraLista;
@@ -33,17 +32,26 @@ public class DistribuidoraController {
     private ItemOperacaoFinanceiraLista listaItemOperacao;
     private ModelStorageController modelStorageController;
     private OperacaoFinanceiraController operacaoFinanaceiraControler;
-
+    
+    public static DistribuidoraController INSTANCE;
    
-    public DistribuidoraController() {
+    private DistribuidoraController() {
         this.listaCliente = new ClienteLista();
         this.listaRacao = new RacaoLista();
         this.listaFornecedor = new FornecedorLista();
         this.modelStorageController = new ModelStorageController();
         this.listaItemOperacao = new ItemOperacaoFinanceiraLista();
-        this.operacaoFinanaceiraControler = new OperacaoFinanceiraController();
+        this.operacaoFinanaceiraControler = OperacaoFinanceiraController.getInstance();
         this.inicilaizarListas();
     }
+    
+    public static DistribuidoraController getInstance(){
+        if(INSTANCE == null){
+            INSTANCE = new DistribuidoraController();
+        }
+        return INSTANCE;
+    }
+    
     
     private void inicilaizarListas(){
         this.getListaCliente().setLista(this.getModelStorageController().recoverClientes());
