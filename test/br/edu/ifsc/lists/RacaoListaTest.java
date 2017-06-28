@@ -61,5 +61,28 @@ public class RacaoListaTest {
 
         assertTrue(this.racaoLista.update(racao, 0));
     }
+    
+    @Test
+    public void deveObterRacaoPorEspecie(){
+        assertFalse(this.racaoLista.getByEspecie(EnumEspecie.GATO).isEmpty());
+    }
+    
+    @Test
+    public void deveObterRacaoPorTipo(){
+        assertFalse(this.racaoLista.getByTipo(EnumTipo.ADULTO).isEmpty());
+    }
+    
+    @Test
+    public void deveObterRacaoPorPorte(){
+        assertFalse(this.racaoLista.getByPorte(EnumPorte.MEDIO).isEmpty());
+    }
+    
+    @Test
+    public void deveRemoverRacao(){
+        System.out.println("Teste - Remover ração");
+        Racao racao = this.racaoLista.get(0);
+        
+        assertTrue(this.racaoLista.remove(racao));
+    }
 
 }
