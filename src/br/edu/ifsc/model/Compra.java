@@ -7,6 +7,7 @@ package br.edu.ifsc.model;
 
 import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
 import br.edu.ifsc.abstracts.AbstractPessoaFisica;
+import br.edu.ifsc.lists.ItemOperacaoFinanceiraLista;
 import java.util.Date;
 import java.util.List;
 
@@ -21,14 +22,24 @@ public class Compra extends AbstractOperacaoFinanceira{
     public Compra() {
     }
 
-    public Compra(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(pessoaFisica, listaRacao);
+    public Compra(Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao) {
+        super(fornecedor, listaRacao);
     }
     
-    public Compra(int parcelas, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(pessoaFisica, listaRacao);
+    public Compra(int parcelas, Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao) {
+        super(fornecedor, listaRacao);
         this.parcelas = parcelas;
     }
+
+    @Override
+    public double realizarOperacao() {
+        if(this.pessoaFisica == null){
+            throw new NullPointerException("Não há um Fornecedor associado a esta Compra!");
+        }
+        return super.realizarOperacao();
+    }
+    
+    
     
     public double realizarOperacao(int parcelas) {
         this.parcelas = parcelas;

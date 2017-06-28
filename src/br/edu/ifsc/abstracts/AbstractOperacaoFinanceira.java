@@ -5,9 +5,9 @@
  */
 package br.edu.ifsc.abstracts;
 
+import br.edu.ifsc.lists.ItemOperacaoFinanceiraLista;
 import br.edu.ifsc.model.ItemOperacaoFinanceira;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,14 +18,14 @@ import java.util.List;
 public abstract class AbstractOperacaoFinanceira {
     protected Date data;
     protected AbstractPessoaFisica pessoaFisica;
-    protected List<ItemOperacaoFinanceira> listaRacao;
+    protected ItemOperacaoFinanceiraLista listaRacao;
 
     public AbstractOperacaoFinanceira() {
         this.data = new Date();
-        this.listaRacao = new ArrayList<>();
+        this.listaRacao = new ItemOperacaoFinanceiraLista();
     }
 
-    public AbstractOperacaoFinanceira(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
+    public AbstractOperacaoFinanceira(AbstractPessoaFisica pessoaFisica, ItemOperacaoFinanceiraLista listaRacao) {
         this.data = new Date();
         this.pessoaFisica = pessoaFisica;
         this.listaRacao = listaRacao;
@@ -64,20 +64,23 @@ public abstract class AbstractOperacaoFinanceira {
     /**
      * @return the listaRacao
      */
-    public List<ItemOperacaoFinanceira> getListaRacao() {
+    public ItemOperacaoFinanceiraLista getListaRacao() {
         return listaRacao;
     }
 
     /**
      * @param listaRacao the listaRacao to set
      */
-    public void setListaRacao(List<ItemOperacaoFinanceira> listaRacao) {
+    public void setListaRacao(ItemOperacaoFinanceiraLista listaRacao) {
         this.listaRacao = listaRacao;
     }
     
     public double realizarOperacao(){
         double valorFinal = 0;
-        for (ItemOperacaoFinanceira itemOperacaoFinanceira : this.listaRacao) {
+        if(this.listaRacao == null || this.listaRacao.getLista().isEmpty()){
+            throw new Error("A lista de Ração está Vazia!");
+        }
+        for (ItemOperacaoFinanceira itemOperacaoFinanceira : this.listaRacao.getLista()) {
             valorFinal += itemOperacaoFinanceira.calcularValor();
         }
         return valorFinal;
@@ -88,7 +91,7 @@ public abstract class AbstractOperacaoFinanceira {
         String texto = "Data: " + this.data.toString() + "\n"
                 + "Pessoa Física: " + this.pessoaFisica.toString() + "\n\n"
                 + "Lista de Rações Encomendadas:\n\n";
-        for (ItemOperacaoFinanceira itemOperacaoFinanceira : this.listaRacao) {
+        for (ItemOperacaoFinanceira itemOperacaoFinanceira : this.listaRacao.getLista()) {
             texto += itemOperacaoFinanceira.toString() + "\n\n";
         }
         return texto;

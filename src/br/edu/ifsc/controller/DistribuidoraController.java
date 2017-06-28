@@ -218,19 +218,19 @@ public class DistribuidoraController {
         return this.listaItemOperacao.getLista();
     }
 
-    public double realizarVenda(Cliente cliente, List<ItemOperacaoFinanceira> listaRacao){
+    public double realizarVenda(Cliente cliente, ItemOperacaoFinanceiraLista listaRacao){
         return this.operacaoFinanaceiraControler.ralizarVenda(cliente, listaRacao);
     }
     
-    public double realizarVenda(Cliente cliente, List<ItemOperacaoFinanceira> listaRacao, double desconto){
+    public double realizarVenda(Cliente cliente, ItemOperacaoFinanceiraLista listaRacao, double desconto){
         return this.operacaoFinanaceiraControler.ralizarVenda(cliente, listaRacao, desconto);
     }
     
-    public double realizarCompra(Fornecedor fornecedor, List<ItemOperacaoFinanceira> listaRacao){
+    public double realizarCompra(Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao){
         return this.operacaoFinanaceiraControler.ralizarCompra(fornecedor, listaRacao);
     }
     
-    public double realizarCompra(Fornecedor fornecedor, List<ItemOperacaoFinanceira> listaRacao, int prazo){
+    public double realizarCompra(Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao, int prazo){
         return this.operacaoFinanaceiraControler.ralizarCompra(fornecedor, listaRacao, prazo);
     }
     

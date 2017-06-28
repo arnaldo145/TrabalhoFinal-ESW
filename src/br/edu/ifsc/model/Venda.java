@@ -6,9 +6,7 @@
 package br.edu.ifsc.model;
 
 import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
-import br.edu.ifsc.abstracts.AbstractPessoaFisica;
-import java.util.Date;
-import java.util.List;
+import br.edu.ifsc.lists.ItemOperacaoFinanceiraLista;
 
 /**
  *
@@ -17,8 +15,8 @@ import java.util.List;
 public class Venda extends AbstractOperacaoFinanceira{
     private double desconto;
 
-    public Venda(AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(pessoaFisica, listaRacao);
+    public Venda(Cliente cliente, ItemOperacaoFinanceiraLista listaRacao) {
+        super(cliente, listaRacao);
         this.desconto = 0;
     }
 
@@ -26,12 +24,21 @@ public class Venda extends AbstractOperacaoFinanceira{
         this.desconto = desconto;
     }
     
-    
 
-    public Venda(double desconto, AbstractPessoaFisica pessoaFisica, List<ItemOperacaoFinanceira> listaRacao) {
-        super(pessoaFisica, listaRacao);
+    public Venda(double desconto, Cliente cliente, ItemOperacaoFinanceiraLista listaRacao) {
+        super(cliente, listaRacao);
         this.desconto = desconto;
     }
+
+    @Override
+    public double realizarOperacao() {
+        if(this.pessoaFisica == null){
+            throw new NullPointerException("Não há um CLiente associado a esta Venda!");
+        }
+        return super.realizarOperacao();
+    }
+    
+    
     
     public double realizarOperacao(double desconto) {
         this.desconto = desconto;
@@ -64,6 +71,10 @@ public class Venda extends AbstractOperacaoFinanceira{
         }
         return texto;
     }
+
+    
+    
+    
     
     
     

@@ -7,7 +7,10 @@ package br.edu.ifsc.controller;
 
 import br.edu.ifsc.abstracts.AbstractOperacaoFinanceira;
 import br.edu.ifsc.abstracts.AbstractPessoaFisica;
+import br.edu.ifsc.lists.ItemOperacaoFinanceiraLista;
+import br.edu.ifsc.model.Cliente;
 import br.edu.ifsc.model.Compra;
+import br.edu.ifsc.model.Fornecedor;
 import br.edu.ifsc.model.ItemOperacaoFinanceira;
 import br.edu.ifsc.model.Venda;
 import java.util.ArrayList;
@@ -21,30 +24,40 @@ public class OperacaoFinanceiraController {
     private List<AbstractOperacaoFinanceira> listaOperacoes;
     private AbstractOperacaoFinanceira operaco;
     
-    public OperacaoFinanceiraController() {
+    public static OperacaoFinanceiraController INSTANCIA;
+    
+    private  OperacaoFinanceiraController() {
         listaOperacoes = new ArrayList<>();
     }
     
-    public double ralizarVenda(AbstractPessoaFisica pessoa, List<ItemOperacaoFinanceira> listaRacao){
-        operaco = new Venda(pessoa, listaRacao);
+    public static OperacaoFinanceiraController getInstance(){
+        if(INSTANCIA == null){
+            INSTANCIA = new OperacaoFinanceiraController();
+        }
+        return INSTANCIA;
+    }
+    
+    
+    public double ralizarVenda(Cliente cliente, ItemOperacaoFinanceiraLista listaRacao){
+        operaco = new Venda(cliente, listaRacao);
         this.listaOperacoes.add(operaco);
         return this.operaco.realizarOperacao();
     }
     
-    public double ralizarVenda(AbstractPessoaFisica pessoa, List<ItemOperacaoFinanceira> listaRacao, double desconto){
-        operaco = new Venda(desconto, pessoa, listaRacao);
+    public double ralizarVenda(Cliente cliente, ItemOperacaoFinanceiraLista listaRacao, double desconto){
+        operaco = new Venda(desconto, cliente, listaRacao);
         this.listaOperacoes.add(operaco);
         return ((Venda)this.operaco).realizarOperacao(desconto);
     }
     
-    public double ralizarCompra(AbstractPessoaFisica pessoa, List<ItemOperacaoFinanceira> listaRacao){
-        operaco = new Compra(pessoa, listaRacao);
+    public double ralizarCompra(Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao){
+        operaco = new Compra(fornecedor, listaRacao);
         this.listaOperacoes.add(operaco);
         return this.operaco.realizarOperacao();
     }
     
-    public double ralizarCompra(AbstractPessoaFisica pessoa, List<ItemOperacaoFinanceira> listaRacao, int parcelas){
-        operaco = new Venda(parcelas, pessoa, listaRacao);
+    public double ralizarCompra(Fornecedor fornecedor, ItemOperacaoFinanceiraLista listaRacao, int parcelas){
+        operaco = new Compra(parcelas, fornecedor, listaRacao);
         this.listaOperacoes.add(operaco);
         return ((Compra)this.operaco).realizarOperacao(parcelas);
     }
