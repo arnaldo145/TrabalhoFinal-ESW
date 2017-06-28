@@ -99,7 +99,8 @@ public class CompraTest {
      */
     @Test
     public void testToString() {
-       
+        System.out.println("* Test to String");
+        System.out.println(this.compra.toString());
     }
     
 }

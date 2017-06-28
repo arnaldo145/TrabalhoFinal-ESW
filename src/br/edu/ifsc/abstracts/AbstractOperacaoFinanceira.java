@@ -31,7 +31,11 @@ public abstract class AbstractOperacaoFinanceira {
         this.listaRacao = listaRacao;
     }
 
-    
+    public AbstractOperacaoFinanceira(Date data, AbstractPessoaFisica pessoaFisica, ItemOperacaoFinanceiraLista listaRacao) {
+        this.data = data;
+        this.pessoaFisica = pessoaFisica;
+        this.listaRacao = listaRacao;
+    }
 
     /**
      * @return the data

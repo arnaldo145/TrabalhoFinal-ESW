@@ -28,7 +28,7 @@ public class Fornecedor extends AbstractPessoaFisica{
 
     @Override
     public String toString() {
-        return super.toString() + this.url + "\n";
+        return super.toString() + "Url: " + this.url + "\n";
     }
     
     
