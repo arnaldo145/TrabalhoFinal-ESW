@@ -19,23 +19,35 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Aluno
+ * @author Arnaldo
  */
 public class ItemOperacaoFinanceiraListaTest {
 
+    private ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista;
+
     public ItemOperacaoFinanceiraListaTest() {
+        this.itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
     }
 
     @BeforeClass
     public static void setUpClass() {
+        System.out.println("===== Iniciando testes da classe ItemOperacaoFinanceiraLista =====");
     }
 
     @AfterClass
     public static void tearDownClass() {
+        System.out.println("===== Finalizando testes da classe ItemOperacaoFinanceiraLista =====");
     }
 
     @Before
     public void setUp() {
+        Racao racao1 = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
+        Racao racao2 = new Racao("GranPlus", 5.0, 15.00, EnumEspecie.CACHORRO, EnumPorte.MEDIO, EnumTipo.ADULTO);
+
+        ItemOperacaoFinanceira itemOperacaoFinanceira1 = new ItemOperacaoFinanceira(1, racao1, 5);
+        this.itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira1);
+        ItemOperacaoFinanceira itemOperacaoFinanceira2 = new ItemOperacaoFinanceira(2, racao2, 10);
+        this.itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira2);
     }
 
     @After
@@ -48,9 +60,12 @@ public class ItemOperacaoFinanceiraListaTest {
     @Test
     public void deveAdicionarItemOperacaoFinanceira() {
         System.out.println("Teste - Deve Adicionar ItemOperacaoFinanceira");
-        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
-        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(racao, 1);
-        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
+
+        Racao racao
+                = new Racao("GranPlus", 5.0, 25.00, EnumEspecie.CACHORRO,
+                        EnumPorte.MEDIO, EnumTipo.FILHOTE);
+        ItemOperacaoFinanceira itemOperacaoFinanceira
+                = new ItemOperacaoFinanceira(3, racao, 15);
 
         assertTrue(itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira));
     }
@@ -61,35 +76,22 @@ public class ItemOperacaoFinanceiraListaTest {
     @Test
     public void deveRemoverItemOperacaoFinanceira() {
         System.out.println("Teste - Deve remover ItemOperacaoFinanceira");
-        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
-        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(1, racao, 5);
-        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
-        itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira);
-
+        
+        ItemOperacaoFinanceira itemOperacaoFinanceira = this.itemOperacaoFinanceiraLista.get(1);       
         assertTrue(itemOperacaoFinanceiraLista.remove(itemOperacaoFinanceira));
     }
 
     /**
-     * Test of upadate method, of class ItemOperacaoFinanceiraLista.
+     * Test of update method, of class ItemOperacaoFinanceiraLista.
      */
     @Test
     public void atualizarItemOperacaoFinanceira() {
         System.out.println("Teste - Deve atualizar ItemOperacaoFinanceira");
-        Racao racao = new Racao("Guabi Natural", 5.0, 20.00, EnumEspecie.GATO, EnumPorte.PEQUENO, EnumTipo.FILHOTE);
-        ItemOperacaoFinanceira itemOperacaoFinanceira = new ItemOperacaoFinanceira(1, racao, 5);
-        ItemOperacaoFinanceiraLista itemOperacaoFinanceiraLista = new ItemOperacaoFinanceiraLista();
-        itemOperacaoFinanceiraLista.add(itemOperacaoFinanceira);
+
+        ItemOperacaoFinanceira itemOperacaoFinanceira = this.itemOperacaoFinanceiraLista.get(0);   
+        itemOperacaoFinanceira.setQuantidade(30);
         
-        racao.setValor(25.00);
-        assertTrue(itemOperacaoFinanceiraLista.update(itemOperacaoFinanceira, 0));
-        
-        
-        ItemOperacaoFinanceira novoItem = null;
-        int index = 0;
-        ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
-        instance.update(novoItem, index);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertTrue(this.itemOperacaoFinanceiraLista.update(itemOperacaoFinanceira, 0));
     }
 
     /**
@@ -97,14 +99,9 @@ public class ItemOperacaoFinanceiraListaTest {
      */
     @Test
     public void obterItemOperacaoFinanceira() {
-        System.out.println("get");
-        int index = 0;
-        ItemOperacaoFinanceiraLista instance = new ItemOperacaoFinanceiraLista();
-        ItemOperacaoFinanceira expResult = null;
-        ItemOperacaoFinanceira result = instance.get(index);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        System.out.println("Teste - Deve obter ItemOperacaoFinanceira");
+
+        assertEquals(1, itemOperacaoFinanceiraLista.get(0).getCodigo());
     }
 
 }
